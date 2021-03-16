@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    
+    
+    <title>HODL</title>
+</head>
+<body>
+    
+    <h1 class="title">HODL</h1>
+    <div id="tot">
+
+        <div class="numbers">
+            <div class="inp">
+                <label for="shares" class="shares">SHARES</label>
+                <input class="sharesNumber" value="5" onkeyup="shareInput()" type="text" name="shares" >
+            </div>
+            <div class="inp">
+                <label for="price" class="price">PRICE</label>
+                <input class="priceNumber" value="200" onkeyup="priceInput()" type="text" name="price" >
+            </div>
+        </div>
+
+        <div class="slider">
+            <img src="./images/pointer.svg" alt="pointer" class="pointer">
+            <div class="axis"></div>
+            
+            <div class="values">
+                <p class="start">$0</p>
+                <div class="pointerValue">
+
+                </div>
+                <input class="end" value="1000">
+                <!-- <p class="end">$1k</p> -->
+            </div>
+        </div>
+
+        <div class="holdings inp">
+            <label for="holdings">HOLDINGS</label>
+            <input type="text" class="holdingsNumber" onkeyup="holdingsInput()">
+        </div>
+        
+    </div>
+    <script src="./script.js"></script>
+    
+</body>
+</html>
