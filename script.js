@@ -6,6 +6,14 @@ let sharesNumber;
 let priceNumber;
 let holdingsNumber;
 
+let pointer = document.querySelector('.pointer');
+let pointerContainer = document.querySelector('.pointerContainer');
+let pointerValue = document.querySelector('.pointerValue');
+let dobi = document.querySelector('.dobi');
+
+dobi.value = 200;
+priceInput();
+
 function shareInput() {
 
     updateinputs();
@@ -15,23 +23,28 @@ function priceInput() {
 
     updateinputs();
     holdings.value = parseInt(holdingsNumber);
+    maxValue = document.querySelector('.end').value;
+
+    let pntrPosition = 680 / (maxValue / priceNumber);
+    pointer.style.left = pntrPosition + 'px';
+
+    pointerValue.style.left = pntrPosition + 'px';
 }
 function holdingsInput() {
     sharesNumber = parseFloat(shares.value);
     holdingsNumber = parseFloat(holdings.value);
     priceNumber = holdingsNumber / sharesNumber;
     price.value = priceNumber;
+
+    maxValue = document.querySelector('.end').value;
+    let pntrPosition = 680 / (maxValue / priceNumber);
+    pointer.style.left = pntrPosition + 'px';
 }
 function updateinputs() {
     sharesNumber = parseFloat(shares.value);
     priceNumber = parseFloat(price.value);
     holdingsNumber = sharesNumber * priceNumber;
 }
-
-let pointer = document.querySelector('.pointer');
-let pointerContainer = document.querySelector('.pointerContainer');
-let pointerValue = document.querySelector('.pointerValue');
-let dobi = document.querySelector('.dobi');
 
 
 dragPointer(pointer);
@@ -70,6 +83,7 @@ function dragPointer(elmnt){
             price.value = dobi.value;
             priceInput();
         }
+        
     }
     function closeDragElement(e) {
         document.onmouseup = null;
