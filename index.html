@@ -26,20 +26,32 @@
             </div>
         </div>
 
+
+        <!-- SLIDER  -->
         <div class="slider">
-            <img src="./images/pointer.svg" alt="pointer" class="pointer">
+
+
+            <div class="pointerContainer">
+                <img src="./images/pointer.svg" alt="pointer" class="pointer">
+                <div class="pointerValue">
+                    <input class="dobi" type="text" value="0">
+                </div>
+            </div>
+
+
             <div class="axis"></div>
             
             <div class="values">
                 <p class="start">$0</p>
-                <div class="pointerValue">
-
-                </div>
+                <!-- <div class="pointerValue">
+                    <input class="dobi" type="text" value="0">
+                </div> -->
                 <input class="end" value="1000">
-                <!-- <p class="end">$1k</p> -->
             </div>
         </div>
 
+
+        <!-- HOLDINGS -->
         <div class="holdings inp">
             <label for="holdings">HOLDINGS</label>
             <input type="text" class="holdingsNumber" onkeyup="holdingsInput()">
