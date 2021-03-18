@@ -1,13 +1,12 @@
-let shares = document.querySelector('.sharesNumber');
-let price = document.querySelector('.priceNumber');
-let holdings = document.querySelector('.holdingsNumber');
+let money = {
+    shares: document.querySelector('.sharesNumber'),
+    price: document.querySelector('.priceNumber'),
+    holdings: document.querySelector('.holdingsNumber')
+}
 
-let sharesNumber;
-let priceNumber;
-let holdingsNumber;
+let sharesNumber, priceNumber, holdingsNumber;
 
 let pointer = document.querySelector('.pointer');
-let pointerContainer = document.querySelector('.pointerContainer');
 let pointerValue = document.querySelector('.pointerValue');
 let dobi = document.querySelector('.dobi');
 
@@ -17,35 +16,38 @@ priceInput();
 function shareInput() {
 
     updateinputs();
-    holdings.value = parseInt(holdingsNumber);
+    money.holdings.value = parseInt(holdingsNumber);
 }
 function priceInput() {
 
     updateinputs();
-    holdings.value = parseInt(holdingsNumber);
-    maxValue = document.querySelector('.end').value;
-
-    let pntrPosition = 680 / (maxValue / priceNumber);
-    pointer.style.left = pntrPosition + 'px';
-
-    pointerValue.style.left = pntrPosition + 'px';
+    money.holdings.value = parseInt(holdingsNumber);
+    pointerUpdate();
 }
 function holdingsInput() {
-    sharesNumber = parseFloat(shares.value);
-    holdingsNumber = parseFloat(holdings.value);
+    sharesNumber = parseFloat(money.shares.value);
+    holdingsNumber = parseFloat(money.holdings.value);
     priceNumber = holdingsNumber / sharesNumber;
-    price.value = priceNumber;
+    money.price.value = priceNumber;
+    pointerUpdate();
 
-    maxValue = document.querySelector('.end').value;
-    let pntrPosition = 680 / (maxValue / priceNumber);
-    pointer.style.left = pntrPosition + 'px';
 }
+
+
 function updateinputs() {
-    sharesNumber = parseFloat(shares.value);
-    priceNumber = parseFloat(price.value);
+    sharesNumber = parseFloat(money.shares.value);
+    priceNumber = parseFloat(money.price.value);
+
     holdingsNumber = sharesNumber * priceNumber;
 }
+function pointerUpdate() {
+    maxValue = document.querySelector('.end').value;
+    let pntrPosition = 680 / (maxValue / parseFloat(money.price.value));
 
+    pointer.style.left = pntrPosition + 'px';
+    pointerValue.style.left = pntrPosition + 'px';
+    dobi.value = parseFloat(money.price.value);
+}
 
 dragPointer(pointer);
 
@@ -67,20 +69,21 @@ function dragPointer(elmnt){
         e = e || window.event;
         e.preventDefault();
 
-        let pos3 = pos1;
         pos1 = pos2 - e.clientX;
         pos2 = e.clientX;
 
         let newPosition = elmnt.offsetLeft - pos1;
-        if(newPosition > 0 && newPosition <681) {
+        if(newPosition > 0 && newPosition < 681) {
             
-            // let difference = elmnt.offsetLeft - pointerValue.offsetLeft;
+            // THE POINTER 
             elmnt.style.left = (elmnt.offsetLeft - pos1) + 'px';
+            
+            // THE VALUE CONTAINER 
             pointerValue.style.left = (elmnt.offsetLeft - pos1) + 'px';
-
+            
             maxValue = document.querySelector('.end').value;
             dobi.value = parseInt(newPosition * (maxValue / 680));
-            price.value = dobi.value;
+            money.price.value = dobi.value;
             priceInput();
         }
         
