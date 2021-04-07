@@ -1,7 +1,8 @@
 let money = {
     shares: document.querySelector('.sharesNumber'),
     price: document.querySelector('.priceNumber'),
-    holdings: document.querySelector('.holdingsNumber')
+    holdings: document.querySelector('.holdingsNumber'),
+    converter: document.querySelector('.converter')
 }
 
 let sharesNumber, priceNumber, holdingsNumber;
@@ -13,26 +14,37 @@ let dobi = document.querySelector('.dobi');
 dobi.value = 200;
 priceInput();
 
+// INPUTS //
+
 function shareInput() {
 
     updateinputs();
     money.holdings.value = parseInt(holdingsNumber);
+    money.converter.value = holdingsNumber * 4;
 }
 function priceInput() {
 
     updateinputs();
     money.holdings.value = parseInt(holdingsNumber);
+    money.converter.value = holdingsNumber * 4;
     pointerUpdate();
 }
 function holdingsInput() {
     sharesNumber = parseFloat(money.shares.value);
     holdingsNumber = parseFloat(money.holdings.value);
     priceNumber = holdingsNumber / sharesNumber;
-    
+
     money.price.value = priceNumber;
     pointerUpdate();
-}
 
+    money.converter.value = holdingsNumber * 4;
+}
+function convertInput() {
+    let convertedVal = money.converter.value;
+    
+    money.holdings.value = convertedVal / 4;
+    holdingsInput();
+}
 
 function updateinputs() {
     sharesNumber = parseFloat(money.shares.value);

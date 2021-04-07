@@ -118,6 +118,10 @@ input:not(.dobi, .end) {
 }
 
 /* //////////// HOLDINGS /////////// */
+.hold {
+    display: flex;
+    flex-direction: row;
+}
 
 .holdings {
     font-size: 40px;

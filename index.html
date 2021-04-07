@@ -46,15 +46,21 @@
                 <!-- <div class="pointerValue">
                     <input class="dobi" type="text" value="0">
                 </div> -->
-                <input class="end" value="1000">
+                <input class="end" value="1000" onkeyup="pointerUpdate()">
             </div>
         </div>
 
 
         <!-- HOLDINGS -->
-        <div class="holdings inp">
-            <label for="holdings">HOLDINGS</label>
-            <input type="text" class="holdingsNumber" onkeyup="holdingsInput()">
+        <div class="hold">
+            <div class="holdings inp">
+                <label for="holdings">HOLDINGS</label>
+                <input type="text" class="holdingsNumber" onkeyup="holdingsInput()">
+            </div>
+            <div class="holdings inp">
+                <label for="converter">RON</label>
+                <input type="text" class="converter" onkeyup="convertInput()">
+            </div>
         </div>
         
     </div>
