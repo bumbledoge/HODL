@@ -28,9 +28,9 @@ function holdingsInput() {
     sharesNumber = parseFloat(money.shares.value);
     holdingsNumber = parseFloat(money.holdings.value);
     priceNumber = holdingsNumber / sharesNumber;
+    
     money.price.value = priceNumber;
     pointerUpdate();
-
 }
 
 
