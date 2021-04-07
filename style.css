@@ -31,6 +31,8 @@ input:not(.dobi, .end) {
     
     max-width: 100px;
     height: 40px;
+
+    border: 1px solid gray;
 }
 
 /* //////////// NUMBERS /////////// */
