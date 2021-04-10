@@ -25,7 +25,7 @@ body {
     width: 50px;
     margin: 10px auto;
 }
-input:not(.dobi, .end) {
+input:not(.maxVal, .axis) {
     font-size: 30px;
     text-align: center;
     
@@ -56,8 +56,15 @@ input:not(.dobi, .end) {
 
 .slider {
     width: 700px;
-    
+}
+.axis {
+    /* appearance: none; */
+    width: 700px;
+}
 
+
+/* .slider {
+    width: 700px;
 }
 .pointer {
     position: relative;
@@ -75,14 +82,15 @@ input:not(.dobi, .end) {
     text-align: center;
     font-size: 17px;
     color: white;
-}
+} */
+
 .pointerValue {
     position: absolute;
     
     width: 70px;
     height: 30px;
     margin-top: 10px;
-    margin-left: -27px;
+    margin-left: -30px;
 
     
     background: #0d9e97;
@@ -90,7 +98,7 @@ input:not(.dobi, .end) {
 }
 .axis {
     width: 680px;
-    height: 5px;
+    height: 10px;
 
     background: linear-gradient(to right,red, green);
     border-radius: 2px;
@@ -98,13 +106,13 @@ input:not(.dobi, .end) {
     margin: 0 auto;
 }
 
-.values {
+.sliderValues {
     display: flex;
     justify-content: space-between;
 
     font-size: 20px;
 }
-.end {
+.maxVal {
     font-size: 20px;
     background-color: white;
     text-align: center;
@@ -121,6 +129,7 @@ input:not(.dobi, .end) {
 .hold {
     display: flex;
     flex-direction: row;
+    gap: 2rem;
 }
 
 .holdings {
@@ -132,3 +141,4 @@ input:not(.dobi, .end) {
     max-width: 200px;
 
 }
+
