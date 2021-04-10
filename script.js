@@ -52,8 +52,13 @@ function convertInput() {
 
 
 function updateInputs() {
+    maxValue = document.querySelector('.maxVal');
     sharesNumber = parseFloat(money.shares.value);
     priceNumber = parseFloat(money.price.value);
+    if(priceNumber > maxValue.value) {
+        maxValue.value = priceNumber;
+        bubble.innerHTML = priceNumber;
+    }
 
     holdingsNumber = sharesNumber * priceNumber;
 }
@@ -64,6 +69,9 @@ function pointerUpdate() {
     
     axis.max = maxValue;
     axis.value = money.price.value;
+
+    bubble.style.left = money.price.value * (680 / maxValue) + axis.offsetLeft + 'px';
+
 }
 
 
