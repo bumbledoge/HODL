@@ -1,3 +1,17 @@
+let colorTheme = document.getElementById('colorMode');
+let v1 = 'light';
+let v2 = 'dark';
+
+colorTheme.onclick = () => {
+    document.body.classList.remove(v1);
+    document.body.classList.add(v2);
+
+    let aux;
+    aux = v1;
+    v1 = v2;
+    v2 = aux;
+}
+
 let mousePos;
 let money = {
     shares: document.querySelector('.sharesNumber'),
@@ -24,7 +38,7 @@ function shareInput() {
 
     updateInputs();
     money.holdings.value = parseInt(holdingsNumber);
-    money.converter.value = holdingsNumber * 4;
+    money.converter.value = parseInt(holdingsNumber * 4);
 }
 function priceInput() {
 
@@ -36,9 +50,10 @@ function priceInput() {
 function holdingsInput() {
     sharesNumber = parseFloat(money.shares.value);
     holdingsNumber = parseFloat(money.holdings.value);
-    priceNumber = holdingsNumber / sharesNumber;
+    priceNumber = parseInt(holdingsNumber / sharesNumber);
 
     money.price.value = priceNumber;
+    updateInputs();
     pointerUpdate();
 
     money.converter.value = parseInt(holdingsNumber * 4);
@@ -56,8 +71,8 @@ function updateInputs() {
     sharesNumber = parseFloat(money.shares.value);
     priceNumber = parseFloat(money.price.value);
     if(priceNumber > maxValue.value) {
-        maxValue.value = priceNumber;
-        bubble.innerHTML = priceNumber;
+        maxValue.value = parseInt(priceNumber);
+        bubble.innerHTML = parseInt(priceNumber);
     }
 
     holdingsNumber = sharesNumber * priceNumber;
@@ -82,49 +97,3 @@ axis.addEventListener('input', ()=> {
     bubble.style.left = money.price.value * (680 / maxValue) + axis.offsetLeft + 'px';
     bubble.innerHTML = axis.value;
 })    
-
-
-
-// dragPointer(pointer);
-// function dragPointer(elmnt){
-//     let pos1 = 0, pos2 = 0;
-
-//     elmnt.onmousedown = dragMouseDown;
-
-//     function dragMouseDown(e) {
-//         e = e || window.event;
-//         e.preventDefault();
-        
-//         pos2 = e.clientX;
-        
-//         document.onmouseup = closeDragElement;
-//         document.onmousemove = elementDrag;
-//     }
-//     function elementDrag(e) {
-//         e = e || window.event;
-//         e.preventDefault();
-
-//         pos1 = pos2 - e.clientX;
-//         pos2 = e.clientX;
-
-//         let newPosition = elmnt.offsetLeft - pos1;
-//         if(newPosition > 0 && newPosition < 681) {
-            
-//             // THE POINTER 
-//             elmnt.style.left = (elmnt.offsetLeft - pos1) + 'px';
-            
-//             // THE VALUE CONTAINER 
-//             pointerValue.style.left = (elmnt.offsetLeft - pos1) + 'px';
-            
-//             maxValue = document.querySelector('.end').value;
-//             dobi.value = parseInt(newPosition * (maxValue / 680));
-//             money.price.value = dobi.value;
-//             priceInput();
-//         }
-        
-//     }
-//     function closeDragElement(e) {
-//         document.onmouseup = null;
-//         document.onmousemove = null;
-//     }
-// }

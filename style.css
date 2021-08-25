@@ -1,11 +1,33 @@
 * {
     padding: 0;
     margin: 0;
+
+}
+#colorMode {
+    position: absolute;
+    top:-40px;
+    left:-40px;
+    
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    
+    background-color: var(--bubbleColor);
+    color: var(--bgColor);
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    transition: color 500ms ease-in-out;
 }
 body {
+    transition: color 500ms ease-in-out, background-color 300ms ease-in-out;
+    background-color: var(--bgColor);
     font-family: 'Poppins', sans-serif;
+    color: var(--fontColor)
 }
 #tot {
+    background-color: var(--bgPanelColor);
+    
     display: flex;
     flex-direction: column;
 
@@ -13,8 +35,8 @@ body {
     justify-content: center;
     
     gap: 5rem;
-    box-shadow: 0px 0px 16px rgb(209, 209, 209);
-    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px var(--shadow); */
+    border-radius: 40px;
 
     width: 800px;
     height: 500px;
@@ -24,6 +46,7 @@ body {
 .title {
     width: 50px;
     margin: 10px auto;
+    color: var(--bgFont);
 }
 input:not(.maxVal, .axis) {
     font-size: 30px;
@@ -33,12 +56,12 @@ input:not(.maxVal, .axis) {
     height: 40px;
 
     border: 1px solid gray;
+    color: var(--fontColor);
 }
 
 /* //////////// NUMBERS /////////// */
 
 .numbers {
-
     font-size: 40px;
     
     display: flex;
@@ -50,6 +73,10 @@ input:not(.maxVal, .axis) {
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
+}
+.inp input {
+    background-color: var(--boxColor);
+
 }
 
 /* //////////// AXIS /////////// */
@@ -93,7 +120,7 @@ input:not(.maxVal, .axis) {
     margin-left: -30px;
 
     
-    background: #0d9e97;
+    background: var(--bgColor);
     border-radius: 5px;
 }
 .axis {
@@ -142,3 +169,20 @@ input:not(.maxVal, .axis) {
 
 }
 
+.light {
+    --bgColor: #dee2e6;
+    --bgPanelColor: #adb5bd;
+    --fontColor: #212529;
+    --bubbleColor: #212529;
+
+    --bgFont: #212529;
+}
+.dark {
+    --bgColor: #212529;
+    --bgPanelColor: #495057;
+    --bubbleColor: #a7afb8;
+    --fontColor: #dee2e6;
+    --bgFont: var(--fontColor);
+    --shadow: #b8f2e6;
+
+}

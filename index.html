@@ -8,19 +8,22 @@
     <link rel="stylesheet" href="./style.css">
     
     
-    <title>HODL</title>
+    <title>HOLD</title>
 </head>
-<body>
+<body class="light">
+    <button id="colorMode">
+        Switch <br>Theme
+    </button>
     
-    <h1 class="title">HODL</h1>
+    <h1 class="title">HOLD</h1>
     <div id="tot">
 
         <div class="numbers">
-            <div class="inp">
+            <div class="inp inp1">
                 <label for="shares" class="shares">SHARES</label>
-                <input class="sharesNumber" value="0.19" onkeyup="shareInput()" type="text" name="shares" >
+                <input class="sharesNumber" value="0.21" onkeyup="shareInput()" type="text" name="shares" >
             </div>
-            <div class="inp">
+            <div class="inp inp2">
                 <label for="price" class="price">PRICE</label>
                 <input class="priceNumber" value="200" onkeyup="priceInput()" type="text" name="price" >
             </div>
@@ -65,7 +68,7 @@
         </div>
         
     </div>
-    <script src="./script.js"></script>
+    <script  src="./script.js"></script>
     
 </body>
 </html>
