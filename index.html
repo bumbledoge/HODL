@@ -18,13 +18,14 @@
     <h1 class="title">HOLD</h1>
     <div id="tot">
 
+        <!-- SHARES & PRICE -->
         <div class="numbers">
             <div class="inp inp1">
-                <label for="shares" class="shares">SHARES</label>
+                <label for="shares" class="shares">&nbsp SHARES &nbsp</label>
                 <input class="sharesNumber" value="0.21" onkeyup="shareInput()" type="text" name="shares" >
             </div>
             <div class="inp inp2">
-                <label for="price" class="price">PRICE</label>
+                <label for="price" class="price">&nbsp PRICE&nbsp</label>
                 <input class="priceNumber" value="200" onkeyup="priceInput()" type="text" name="price" >
             </div>
         </div>
@@ -40,7 +41,7 @@
             </div> -->
             
             <div class="slider">
-                <input type="range" min="1" max="1000" value="500" class="axis">
+                <input type="range" min="1" max="500" value="250" class="axis">
             </div>
             
             <div class="sliderValues">
@@ -49,7 +50,7 @@
                     <!-- <input class="dobi" type="text" value="0"> -->
                     <span class="pv">200</span>
                 </div>
-                <input class="maxVal" value="1000" onkeyup="pointerUpdate()">
+                <input class="maxVal" value="500" onkeyup="pointerUpdate()">
             </div>
         
         </div>
@@ -58,11 +59,11 @@
         <!-- HOLDINGS -->
         <div class="hold">
             <div class="holdings inp">
-                <label for="holdings">HOLDINGS</label>
+                <label for="holdings">&nbsp HOLDINGS</label>
                 <input type="text" class="holdingsNumber" onkeyup="holdingsInput()">
             </div>
             <div class="holdings inp">
-                <label for="converter">RON</label>
+                <label for="converter">&nbsp RON </label>
                 <input type="text" class="converter" onkeyup="convertInput()">
             </div>
         </div>

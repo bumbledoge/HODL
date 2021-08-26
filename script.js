@@ -2,14 +2,18 @@ let colorTheme = document.getElementById('colorMode');
 let v1 = 'light';
 let v2 = 'dark';
 
+
+// REMEMBER THEME WITH LOCALSTORAGE
+const theme = localStorage.getItem('theme');
+theme && document.body.classList.add(theme);
+
+
 colorTheme.onclick = () => {
     document.body.classList.remove(v1);
     document.body.classList.add(v2);
+    localStorage.setItem('theme', v2);
 
-    let aux;
-    aux = v1;
-    v1 = v2;
-    v2 = aux;
+    { let aux = v1; v1 = v2; v2 = aux; }
 }
 
 let mousePos;
@@ -72,7 +76,8 @@ function updateInputs() {
     priceNumber = parseFloat(money.price.value);
     if(priceNumber > maxValue.value) {
         maxValue.value = parseInt(priceNumber);
-        bubble.innerHTML = parseInt(priceNumber);
+        bubble.innerHTML = `<span class="pv">${parseInt(priceNumber)}</span>`
+        // bubble.innerHTML = parseInt(priceNumber);
     }
 
     holdingsNumber = sharesNumber * priceNumber;
@@ -88,12 +93,20 @@ function pointerUpdate() {
     bubble.style.left = money.price.value * (680 / maxValue) + axis.offsetLeft + 'px';
 
 }
+function nrDig(number) {
+    if (number < 10) return 1;
+    return 1 + nrDig(parseInt(number / 10));
+}
 
 
 axis.addEventListener('input', ()=> {
     maxValue = document.querySelector('.maxVal').value;
     money.price.value = axis.value;
     priceInput();
+
     bubble.style.left = money.price.value * (680 / maxValue) + axis.offsetLeft + 'px';
-    bubble.innerHTML = axis.value;
+    bubble.innerHTML = `<span class="pv">${axis.value}</span>`;
+  
+    const pv = document.querySelector('.pv');
+    pv.style.margin = `${30 - ((nrDig(axis.value)-1) * 6)}px`;
 })    

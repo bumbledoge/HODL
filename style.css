@@ -53,10 +53,31 @@ input:not(.maxVal, .axis) {
     text-align: center;
     
     max-width: 100px;
-    height: 40px;
+    height: 67px;
 
-    border: 1px solid gray;
-    color: var(--fontColor);
+    border: 1px solid transparent;
+    color: var(--bgColor);
+    background-color: var(--bubbleColor);
+    border-radius: 30px;
+
+    transition: max-width 500ms ease;
+}
+.sharesNumber:hover {
+    max-width: 110px;
+}
+
+.priceNumber:hover {
+    max-width: 110px;
+}
+/* .holdingsNumber:hover {
+    max-width: 110px;
+}
+.converter:hover {
+    max-width: 110px;
+} */
+.inp {
+    background-color: var(--bgColor);
+    border-radius: 30px;
 }
 
 /* //////////// NUMBERS /////////// */
@@ -74,10 +95,6 @@ input:not(.maxVal, .axis) {
     align-items: center;
     gap: 0.5rem;
 }
-.inp input {
-    background-color: var(--boxColor);
-
-}
 
 /* //////////// AXIS /////////// */
 
@@ -85,31 +102,8 @@ input:not(.maxVal, .axis) {
     width: 700px;
 }
 .axis {
-    /* appearance: none; */
     width: 700px;
 }
-
-
-/* .slider {
-    width: 700px;
-}
-.pointer {
-    position: relative;
-    width: 20px;
-}
-.pointerContainer {
-    position: relative;
-}
-.dobi {
-    border: none;
-    width: 70px;
-    margin-top: 6px;
-    
-    background: none;
-    text-align: center;
-    font-size: 17px;
-    color: white;
-} */
 
 .pointerValue {
     position: absolute;
@@ -120,8 +114,12 @@ input:not(.maxVal, .axis) {
     margin-left: -30px;
 
     
-    background: var(--bgColor);
+    color: var(--bgColor);
+    background: var(--bubbleColor);
     border-radius: 5px;
+}
+.pv {
+    margin-left: 15px;
 }
 .axis {
     width: 680px;
@@ -141,7 +139,8 @@ input:not(.maxVal, .axis) {
 }
 .maxVal {
     font-size: 20px;
-    background-color: white;
+    color: var(--bgColor);
+    background-color: var(--bubbleColor);
     text-align: center;
 
     width: 70px;
@@ -149,7 +148,7 @@ input:not(.maxVal, .axis) {
 
     margin-top: 3px;
 
-    border: 1px solid black;
+    border: 1px solid transparent;
 }
 
 /* //////////// HOLDINGS /////////// */
