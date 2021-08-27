@@ -1,3 +1,14 @@
+let endpoint = 'latest'
+let access_key = 'c1c7f5eb143732a2c73e40ecf58ecbc9';
+let from = 'GBP';
+
+let currency = 0;
+fetch('http://data.fixer.io/api/' + endpoint + '?access_key=' + access_key)
+    .then(response => response.json())
+    .then(data => currency = data.rates);
+
+
+    
 let colorTheme = document.getElementById('colorMode');
 let v1 = 'light';
 let v2 = 'dark';
@@ -14,6 +25,14 @@ colorTheme.onclick = () => {
     localStorage.setItem('theme', v2);
 
     { let aux = v1; v1 = v2; v2 = aux; }
+}
+
+// store previous digits nr to prevent overflow
+let diggies = {
+    shares: 2,
+    price: 3,
+    holdings: 4,
+    converter: 5
 }
 
 let mousePos;
@@ -48,7 +67,14 @@ function priceInput() {
 
     updateInputs();
     money.holdings.value = parseInt(holdingsNumber);
-    money.converter.value = parseInt(holdingsNumber * 4);
+    if(currency !== 0){
+        
+        let euros = money.holdings.value / currency.USD;
+        money.converter.value =parseInt( euros * currency.RON);
+    }
+    else {
+        money.converter.value = parseInt(holdingsNumber * 4);
+    }
     pointerUpdate();
 }
 function holdingsInput() {
@@ -60,7 +86,16 @@ function holdingsInput() {
     updateInputs();
     pointerUpdate();
 
-    money.converter.value = parseInt(holdingsNumber * 4);
+    if(currency !== 0){
+
+        let euros = money.holdings.value / currency.USD;
+        money.converter.value = parseInt(euros * currency.RON);
+    }
+    else {
+        money.converter.value = money.holdings.value * 4;
+    }
+    
+    // money.converter.value = parseInt(holdingsNumber * 4);
 }
 function convertInput() {
     let convertedVal = money.converter.value;
@@ -79,8 +114,38 @@ function updateInputs() {
         bubble.innerHTML = `<span class="pv">${parseInt(priceNumber)}</span>`
         // bubble.innerHTML = parseInt(priceNumber);
     }
-
     holdingsNumber = sharesNumber * priceNumber;
+
+    // UPDATE BOX SIZE BASED ON NUMEBR SIZE
+
+    let sharesDig = nrDig(money.shares.value),
+        priceDig = nrDig(money.price.value),
+        holdingsDig = nrDig(money.holdings.value),
+        converterDig = nrDig(money.converter.value);
+    
+
+    function boxMod(box, digs) {
+        box.style.maxWidth = `${60 + 10 * digs}px`;
+
+        return digs;
+    }
+    
+    if(diggies.shares != sharesDig) {
+        boxMod(money.shares, sharesDig);
+        diggies.shares = sharesDig;
+    }
+    if(diggies.price != priceDig) {
+        boxMod(money.price, priceDig);
+        diggies.price = priceDig;
+    }
+    if(diggies.holdings != holdingsDig) {
+        boxMod(money.holdings, holdingsDig);
+        diggies.holdings = holdingsDig;
+    }
+    if(diggies.converter != converterDig) {
+        boxMod(money.converter, converterDig);
+        diggies.converter = converterDig;
+    }
 }
 
 
@@ -95,7 +160,7 @@ function pointerUpdate() {
 }
 function nrDig(number) {
     if (number < 10) return 1;
-    return 1 + nrDig(parseInt(number / 10));
+    return 1 + nrDig(number / 10);
 }
 
 
@@ -110,3 +175,5 @@ axis.addEventListener('input', ()=> {
     const pv = document.querySelector('.pv');
     pv.style.margin = `${30 - ((nrDig(axis.value)-1) * 6)}px`;
 })    
+
+

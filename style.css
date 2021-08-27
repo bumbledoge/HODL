@@ -62,19 +62,6 @@ input:not(.maxVal, .axis) {
 
     transition: max-width 500ms ease;
 }
-.sharesNumber:hover {
-    max-width: 110px;
-}
-
-.priceNumber:hover {
-    max-width: 110px;
-}
-/* .holdingsNumber:hover {
-    max-width: 110px;
-}
-.converter:hover {
-    max-width: 110px;
-} */
 .inp {
     background-color: var(--bgColor);
     border-radius: 30px;
